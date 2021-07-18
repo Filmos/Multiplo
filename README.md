@@ -31,7 +31,7 @@ As it was said earlier, you can use this tool in your own way by directly refere
 ##### Symbols
 This is an object containing symbols used for syntax. If for some reason you don't like the default ones, this is the place to change them.
 
-In this documentation, following symbols are used:
+In this documentation, following symbols are used:  
 **left** - `〈`  
 **right** - `〉`  
 **split** - `ι`  
