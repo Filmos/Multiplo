@@ -28,11 +28,11 @@ function makeCommandReadme(name, comm) {
     let parsed = parser.parse(updated)
     
     let currentExample = '##### Input\n```\n'+updated+'\n```\n##### Output\n'
-    if(parsed[""]) currentExample += '```\n'+parsed[""]+'\n```'
+    if(parsed[""]) currentExample += '```\n'+parsed[""]+'\n``` '
     
     for(let filename in parsed) {
       if(filename=="") continue
-      currentExample += filename+'\n```\n'+parsed[filename]+'\n```'
+      currentExample += filename+'\n```\n'+parsed[filename]+'\n``` '
     }
     examples.push(currentExample)
   }
