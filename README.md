@@ -16,7 +16,7 @@ Doesn't do anything on its own, it simply returns its first argument.
 ```
 〈=ι123ι234〉
 ```
- ##### Output
+##### Output
 ```
 123
 ```
@@ -30,7 +30,7 @@ Changes case styling of `text` to `caseType`. Possible styles include `lower`, `
 〈forιiι8ι〈indexᛍtypeι〈varιi〉ιNoneιLowerιUpperιTitleιCamelιPascalιSnakeιKebab〉: 〈caseι〈varιtype〉ιsOmE eXAmPlE TExT〉ι
 〉
 ```
- ##### Output
+##### Output
 ```
 None: sOmE eXAmPlE TExT
 Lower: some example text
@@ -47,7 +47,7 @@ Kebab: some-example-text
 ```
 [〈forιiι3ι{filename: '〈indexᛍfilenameι〈varιi〉ιamazing_pigιcool_bovineιcrazy_axolotl〉.json', display: '〈caseιtitleι〈varιfilename〉〉'}ι, 〉]
 ```
- ##### Output
+##### Output
 ```
 [{filename: 'amazing_pig.json', display: 'Amazing Pig'}, {filename: 'cool_bovine.json', display: 'Cool Bovine'}, {filename: 'crazy_axolotl.json', display: 'Crazy Axolotl'}]
 ```
@@ -60,7 +60,7 @@ Evaluates javascript passed as `code`. Especially useful for mathematical operat
 ```
 〈evalι123+5*234〉
 ```
- ##### Output
+##### Output
 ```
 1293
 ```
@@ -71,7 +71,7 @@ Evaluates javascript passed as `code`. Especially useful for mathematical operat
 〈forιiι3ι23+4*〈varιi〉=〈evalι23+4*〈varιi〉〉ι
 〉
 ```
- ##### Output
+##### Output
 ```
 23+4*0=23
 23+4*1=27
@@ -87,7 +87,7 @@ Optional `seperator` can be defined, which will be placed between each iteration
 ```
 〈forιiι15ι+-〉
 ```
- ##### Output
+##### Output
 ```
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 ```
@@ -98,7 +98,7 @@ Optional `seperator` can be defined, which will be placed between each iteration
 〈forιiι3ιIteration 〈varιi〉ι
 〉
 ```
- ##### Output
+##### Output
 ```
 Iteration 0
 Iteration 1
@@ -110,7 +110,7 @@ Iteration 2
 ```
 [〈forιiι5ι'item〈varιi〉'ι〈forιjι〈varιiι+1〉ι, ιreserved〉〉]
 ```
- ##### Output
+##### Output
 ```
 ['item0', 'item1', reserved, 'item2', reserved, reserved, 'item3', reserved, reserved, reserved, 'item4']
 ```
@@ -124,7 +124,7 @@ If `condition` is true (checked by evaluating as javascript), returns `ifTrue`. 
 ```
 〈forιiι5ι〈ifι〈varιi〉%2==0ιHey! ιHo! 〉〉
 ```
- ##### Output
+##### Output
 ```
 Hey! Ho! Hey! Ho! Hey! 
 ```
@@ -137,7 +137,7 @@ Return `index` element given as next arguments. Overflowing is completely safe, 
 ```
 〈forιiι3ι〈indexι〈varιi〉ιaιbιcιd〉〉
 ```
- ##### Output
+##### Output
 ```
 abc
 ```
@@ -150,7 +150,7 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ```
 [〈forιiι6ι〈roundι〈varιi〉*1.3333〉ι,〉]
 ```
- ##### Output
+##### Output
 ```
 [0,1,3,4,5,7]
 ```
@@ -160,9 +160,47 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ```
 〈forιiι12ι〈evalι〈varιi〉*0.1〉 -> 〈roundι〈varιi〉*0.1ι0.25〉ι; 〉
 ```
- ##### Output
+##### Output
 ```
 0 -> 0; 0.1 -> 0; 0.2 -> 0.25; 0.30000000000000004 -> 0.25; 0.4 -> 0.5; 0.5 -> 0.5; 0.6000000000000001 -> 0.5; 0.7000000000000001 -> 0.75; 0.8 -> 0.75; 0.9 -> 1; 1 -> 1; 1.1 -> 1
+```
+
+### 〈toFileιfilenameιcontent〉
+Saves `content` to a file with path `filename`.
+
+#### Examples
+##### Input
+```
+unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍnameι〈varιi〉ιsigmaιdeltoidιbanana-shapedιinverse〉 feature
+〉〈varιname〉: trueι, 〉}
+```
+##### Output
+```
+unimplemented = {sigma: true, deltoid: true, banana-shaped: true, inverse: true}
+```todo.txt
+```
+Implement sigma feature
+Implement deltoid feature
+Implement banana-shaped feature
+Implement inverse feature
+
+```
+
+---
+##### Input
+```
+〈forιiι3ι〈forιjι4ι〈toFileιfile〈varιi〉ι〈varιi〉: 〈varιj〉, 〉〉〉
+```
+##### Output
+file0
+```
+0: 0, 0: 1, 0: 2, 0: 3, 
+```file1
+```
+1: 0, 1: 1, 1: 2, 1: 3, 
+```file2
+```
+2: 0, 2: 1, 2: 2, 2: 3, 
 ```
 
 ### 〈varιnameιoperation〉
@@ -175,7 +213,7 @@ Optional `operation` can be defined, which will be added at the end of the curre
 〈forιiι3ιIteration 〈varιi〉
 〉
 ```
- ##### Output
+##### Output
 ```
 Iteration 0
 Iteration 1
@@ -189,7 +227,7 @@ Iteration 2
 〈forιiι5ιIteration 〈varιiι*2+1〉
 〉
 ```
- ##### Output
+##### Output
 ```
 Iteration 1
 Iteration 3

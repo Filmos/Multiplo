@@ -7,14 +7,16 @@ let defaultOptions = {
   }
 }
 
-errorFlag = {"error": ["An error occurred"]}
-function isError(obj) {
-  return obj === errorFlag
-}
+
 function isFunction(functionToCheck) {
  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
-
+function isString(x) {
+  return Object.prototype.toString.call(x) === "[object String]"
+}
+function isObject(x) {
+  return Object.prototype.toString.call(x) === "[object Object]"
+}
 
 function funcStacker(ar) {
   return (state) => {
@@ -23,7 +25,6 @@ function funcStacker(ar) {
       if(!a) continue
       if(isFunction(a)) {
         let v = a(state)
-        if(isError(v)) return v
         res += (v||"")
       } else res += a
     }
@@ -39,11 +40,14 @@ function fullParse(string, options) {
   
   if(!string) return
   string = symbols.left+"="+symbols.split+string+symbols.right
-  
   let raw = string.split(new RegExp("("+symbols.split+")|("+symbols.right+")|((?:"+symbols.left+"|"+symbols.var+")?[^"+symbols.left+symbols.split+symbols.right+symbols.var+"]*)"))
                   .filter(s => s)
-  let index = 0     
-  return parse()({})
+  
+  let globalHandles = {files: {}}
+  let index = 0  
+     
+  let parsedText = parse()({})
+  return {...globalHandles.files, "": parsedText}
   
   function parse() {
     if(!raw[index].startsWith(symbols.left)) return report.error("Started bracket without an actual bracket: "+raw[index], [raw])
@@ -72,8 +76,10 @@ function fullParse(string, options) {
       index++
     }
     
-    let retFunc = ()=>{return report.error('Something weird happened')}
     
+    
+    
+    let retFunc = ()=>{return report.error('Something weird happened')}
     try {
       let comm = require("./commands/"+type+".js")
       if(comm.code && isFunction(comm.code)) retFunc = comm.code
@@ -82,25 +88,21 @@ function fullParse(string, options) {
     } catch {
       retFunc = ()=>{return report.error('Invalid command name "'+type+'"')}
     }
-    // let filename = args[0](state)
-    // if(isError(filename)) return filename
-    // let cont = args[1](state)
-    // if(isError(cont)) return cont
-    // 
-    // let editor = atom.workspace.getActiveTextEditor()
-    // let path = editor.getPath()
-    // if(!path) return report.error("Error in save snippet: couldn't find current path")
-    // path = path.slice(0,path.lastIndexOf("\\")+1)
-    // let f = new File(path+filename)
-    // f.write(cont)
-    // return cont
+    
+    
     
     return function(state) {
       let res = ""
       try {
-        res += retFunc(state, args, report)
-      } catch {
-        res += report.error('Error occured in "'+type+'" command')
+        res = retFunc(state, args, report)
+        if(isObject(res)) {
+          for(let file in res.files)
+            globalHandles.files[file] = (globalHandles.files[file]||"")+res.files[file]
+            
+          res = res[""] || ""
+        } else res = ""+res
+      } catch(e) {
+        res += report.error('Error occured in "'+type+'" command: '+e)
       }
       
       if(retName!=undefined) state[retName] = res

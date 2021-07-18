@@ -24,7 +24,16 @@ function makeCommandReadme(name, comm) {
   let examples = []
   for(let ex of (comm.examples || [])) {
     let updated = updateSymbols(ex, comm.examplesVersion)
-    examples.push('##### Input\n```\n'+updated+'\n```\n ##### Output\n```\n'+parser.parse(updated)+'\n```')
+    let parsed = parser.parse(updated)
+    
+    let currentExample = '##### Input\n```\n'+updated+'\n```\n##### Output\n'
+    if(parsed[""]) currentExample += '```\n'+parsed[""]+'\n```'
+    
+    for(let filename in parsed) {
+      if(filename=="") continue
+      currentExample += filename+'\n```\n'+parsed[filename]+'\n```'
+    }
+    examples.push(currentExample)
   }
   examples = examples.join("\n\n---\n")
   
