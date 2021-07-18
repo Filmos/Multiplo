@@ -243,7 +243,7 @@ unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍna
 ```
 unimplemented = {sigma: true, deltoid: true, banana-shaped: true, inverse: true}
 ```
-todo.txt
+*todo.txt*
 ```
 Implement sigma feature
 Implement deltoid feature
@@ -259,15 +259,15 @@ Implement inverse feature
 〈forιiι3ι〈forιjι4ι〈toFileιfile〈varιi〉ι〈varιi〉: 〈varιj〉, 〉〉〉
 ```
 ##### Output
-file0
+*file0*
 ```
 0: 0, 0: 1, 0: 2, 0: 3, 
 ```
-file1
+*file1*
 ```
 1: 0, 1: 1, 1: 2, 1: 3, 
 ```
-file2
+*file2*
 ```
 2: 0, 2: 1, 2: 2, 2: 3, 
 ```
