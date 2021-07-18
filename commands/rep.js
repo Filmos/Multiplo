@@ -8,4 +8,10 @@ function parse(state, args, report) {
   
   return res
 }
-module.exports = {code: parse}
+module.exports = {
+  code: parse,
+  arguments: ["n", "content"],
+  description: "Repeats $1 times its $2.",
+  examples: ["〈repι3ιHi,〉","〈repι15ι+-〉"],
+  examplesVersion: "〈〉ι"
+}
