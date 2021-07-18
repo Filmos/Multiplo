@@ -2,7 +2,8 @@ let defaultOptions = {
   symbols: {left: "〈", right:"〉", split:"ι", var:"ᛍ", error:"⦻"},
   report: {
     error: (s)=>{console.error(s); return symbols.error},
-    warn: console.warn
+    warn: console.warn,
+    isError: (s)=>{return s==symbols.error}
   }
 }
 
@@ -32,15 +33,14 @@ function funcStacker(ar) {
 
 
 function fullParse(string, options) {
-  options = {...defaultOptions, ...options}
-  symbols = options.symbols
-  report = options.report
+  options = {symbols: {}, report: {}, ...options}
+  symbols = {...defaultOptions.symbols, ...options.symbols}
+  report = {...defaultOptions.report, ...options.report}
   
   if(!string) return
-  string = symbols.left+"="+string+symbols.right
+  string = symbols.left+"="+symbols.split+string+symbols.right
   
-  
-  let raw = string.split(new RegExp("("+symbols.split+")|("+symbols.right+")|("+symbols.left+"?[^"+symbols.left+symbols.split+symbols.right+symbols.var+"]*)"))
+  let raw = string.split(new RegExp("("+symbols.split+")|("+symbols.right+")|((?:"+symbols.left+"|"+symbols.var+")?[^"+symbols.left+symbols.split+symbols.right+symbols.var+"]*)"))
                   .filter(s => s)
   let index = 0     
   return parse()({})
@@ -55,15 +55,15 @@ function fullParse(string, options) {
     while(index < raw.length) {
       if(raw[index].startsWith(symbols.left)) {curArg.push(parse()); continue}
       if(raw[index] === symbols.split || raw[index] === symbols.right) {
-        if(raw[index] === symbols.split && raw[index-1].startsWith(symbols.left)) {index++; continue}
+        if(raw[index] === symbols.split && (raw[index-1].startsWith(symbols.left) || raw[index-1].startsWith(symbols.var))) {index++; continue}
         index++
         args.push(funcStacker(curArg))
         curArg = []
         if(raw[index-1] === symbols.right) break
         continue
       }
-      if(raw[index].endsWith(symbols.var)) {
-        retName = raw[index].slice(0,-symbols.var.length)
+      if(raw[index].startsWith(symbols.var)) {
+        retName = raw[index].slice(1)
         index++
         continue
       }
@@ -82,117 +82,27 @@ function fullParse(string, options) {
     } catch {
       retFunc = ()=>{return report.error('Invalid command name "'+type+'"')}
     }
-    // switch(type) {
-    //   case "!": retFunc = function(state) {
-    //     let val = args[0](state)
-    //     if(isError(val)) return val
-    //     val = state[val]
-    //     return ""+(val===undefined?"":val)
-    //   }
-    //   break
-    //   case ":": retFunc = function(state) {
-    //     let val = args[0](state)
-    //     if(isError(val)) return val
-    //     try {return ""+eval(val)}
-    //     catch(e) {return report.error('Error in eval snippet: '+e)}
-    //   }
-    //   break
-    //   case "?": retFunc = function(state) {
-    //     let cond = args[0](state)
-    //     if(isError(cond)) return cond
-    //     try {
-    //       let retInd = (eval(cond)?1:2)
-    //       if(!args[retInd]) return ""
-    //       let val = args[retInd](state)
-    //       return val
-    //     }
-    //     catch(e) {return report.error('Error in if snippet: '+e)}
-    //   }
-    //   break
-    //   case "[": retFunc = function(state) {
-    //     let ind = state["i"]
-    //     if(ind===undefined) return report.error('Error in list snippet: not inside a loop')
-    //     if(isNaN(parseInt(ind))) return report.error('Error in list snippet: "'+ind+'" is not a number')
-    //     ind = parseInt(ind)
-    //     if(!args[ind]) return ""
-    //     return args[ind](state)
-    //   }
-    //   break
-    //   // case "s": retFunc = function(state) {
-    //   //   let filename = args[0](state)
-    //   //   if(isError(filename)) return filename
-    //   //   let cont = args[1](state)
-    //   //   if(isError(cont)) return cont
-    //   // 
-    //   //   let editor = atom.workspace.getActiveTextEditor()
-    //   //   let path = editor.getPath()
-    //   //   if(!path) return report.error("Error in save snippet: couldn't find current path")
-    //   //   path = path.slice(0,path.lastIndexOf("\\")+1)
-    //   //   let f = new File(path+filename)
-    //   //   f.write(cont)
-    //   //   return cont
-    //   // }
-    //   // break
-    //   case "^": retFunc = function(state) {
-    //     let caseType = args[0](state)
-    //     if(isError(caseType)) return caseType
-    //     let text = args[1](state)
-    //     if(isError(text)) return text
+    // let filename = args[0](state)
+    // if(isError(filename)) return filename
+    // let cont = args[1](state)
+    // if(isError(cont)) return cont
     // 
-    // 
-    //     switch(caseType.toLowerCase()) {
-    //       case "lower":
-    //         return text.toLowerCase()
-    //       case "upper":
-    //         return text.toUpperCase()
-    //     }
-    // 
-    //     let textSplit = text.split(/ |_|-/).filter(s=>s)
-    //     if(textSplit.length == 1) textSplit = textSplit[0].split(/(?=[A-Z])/).filter(s=>s)
-    // 
-    //     switch(caseType.toLowerCase()) {
-    //       case "title":
-    //         return textSplit.map(t => t.charAt(0).toUpperCase()+t.slice(1).toLowerCase()).join(" ")
-    //       case "camel":
-    //         let ret = textSplit[0].toLowerCase()
-    //         for(let i=1;i<textSplit.length;i++) ret+= textSplit[i].charAt(0).toUpperCase()+textSplit[i].slice(1).toLowerCase()
-    //         return ret
-    //       case "pascal":
-    //         return textSplit.map(t => t.charAt(0).toUpperCase()+t.slice(1).toLowerCase()).join("")
-    //       case "snake":
-    //         return textSplit.map(s => s.toLowerCase()).join("_")
-    //       case "kebab":
-    //         return textSplit.map(s => s.toLowerCase()).join("-")
-    //       default:
-    //         return report.error('Error in text case snippet: "'+caseType+'" is not a valid case type')
-    //     }
-    //   }
-    //   break
-    //   case "~": retFunc = function(state) {
-    //     let a1 = args[0](state)
-    //     if(isError(a1)) return a1
-    //     try {a1 = eval(a1)}
-    //     catch(e) {return report.error('Error in round snippet ('+a1+'): '+e)}
-    //     a1 = parseFloat(a1)
-    //     if(isNaN(a1)) return report.error('Error in round snippet: "'+a1+'" is not a number')
-    //     if(!args[1]) return Math.round(a1)
-    // 
-    //     let a2 = args[1](state)
-    //     if(isError(a2)) return a2
-    //     try {a2 = eval(a2)}
-    //     catch(e) {return report.error('Error in round snippet ('+a2+'): '+e)}
-    //     a2 = parseFloat(a2)
-    //     if(isNaN(a2)) return report.error('Error in round snippet: "'+a2+'" is not a number')
-    // 
-    //     if(a1==0) return a2
-    //     return Math.round(a2/a1)*a1
-    //   }
-    //   break
-    // }
+    // let editor = atom.workspace.getActiveTextEditor()
+    // let path = editor.getPath()
+    // if(!path) return report.error("Error in save snippet: couldn't find current path")
+    // path = path.slice(0,path.lastIndexOf("\\")+1)
+    // let f = new File(path+filename)
+    // f.write(cont)
+    // return cont
     
     return function(state) {
-      let res = ""+retFunc(state, args, options.report)
-      console.log(retName, res)
+      let res = ""
+      try {
+        res += retFunc(state, args, report)
+      } catch {
+        res += report.error('Error occured in "'+type+'" command')
+      }
+      
       if(retName!=undefined) state[retName] = res
       return res
     }
