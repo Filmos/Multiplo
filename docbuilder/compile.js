@@ -4,7 +4,8 @@ symbols = parser.defaultOptions.symbols
 
 
 
-let fullREADME = fs.readFileSync('readme_intro.md')
+let fullREADME = (""+fs.readFileSync('readme_intro.md')).split("\n")
+fullREADME = updateSymbols(fullREADME.slice(1).join("\n"), fullREADME[0])
 
 fs.readdirSync('./../commands/').forEach(file => {
   let comm = require("./../commands/"+file)
@@ -45,6 +46,8 @@ function makeCommandReadme(name, comm) {
   
   
   return `
+
+
 ### ${title}
 ${description}`+(examples?`
 
@@ -56,7 +59,7 @@ ${examples}
 function updateSymbols(string, symbolsVersion) {
   if(!symbolsVersion) return string
   
-  let currentVersion = symbols.left+symbols.right+symbols.split+symbols.var
+  let currentVersion = symbols.left+symbols.right+symbols.split+symbols.var+symbols.error
   if(currentVersion.length < symbolsVersion.length) {
     console.warn("Invalid symbols version: "+symbolsVersion)
     return string
