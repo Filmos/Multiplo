@@ -32,7 +32,7 @@ function makeCommandReadme(name, comm) {
     
     for(let filename in parsed) {
       if(filename=="") continue
-      currentExample += filename+'\n```\n'+parsed[filename]+'\n```\n'
+      currentExample += "*"+filename+'*\n```\n'+parsed[filename]+'\n```\n'
     }
     examples.push(currentExample)
   }
