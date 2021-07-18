@@ -72,7 +72,8 @@ Doesn't do anything on its own, it simply returns its first argument.
 ##### Output
 ```
 123
-``` 
+```
+
 <br><br><br>
 ### 〈caseιcaseTypeιtext〉
 Changes case styling of `text` to `caseType`. Possible styles include `lower`, `upper`, `title`, `camel`, `pascal`, `snake`, `kebab` and `none`.
@@ -93,7 +94,8 @@ Camel: someExampleText
 Pascal: SomeExampleText
 Snake: some_example_text
 Kebab: some-example-text
-``` 
+```
+
 
 ---
 ##### Input
@@ -103,7 +105,8 @@ Kebab: some-example-text
 ##### Output
 ```
 [{filename: 'amazing_pig.json', display: 'Amazing Pig'}, {filename: 'cool_bovine.json', display: 'Cool Bovine'}, {filename: 'crazy_axolotl.json', display: 'Crazy Axolotl'}]
-``` 
+```
+
 <br><br><br>
 ### 〈evalιcode〉
 Evaluates javascript passed as `code`. Especially useful for mathematical operations.
@@ -116,7 +119,8 @@ Evaluates javascript passed as `code`. Especially useful for mathematical operat
 ##### Output
 ```
 1293
-``` 
+```
+
 
 ---
 ##### Input
@@ -129,7 +133,8 @@ Evaluates javascript passed as `code`. Especially useful for mathematical operat
 23+4*0=23
 23+4*1=27
 23+4*2=31
-``` 
+```
+
 <br><br><br>
 ### 〈forιiteratorNameιnιcontentιseperator〉
 Repeats `n` times its `content`. Loop index (0-based) can be accessed as variable `iteratorName`.  
@@ -143,7 +148,8 @@ Optional `seperator` can be defined, which will be placed between each iteration
 ##### Output
 ```
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-``` 
+```
+
 
 ---
 ##### Input
@@ -156,7 +162,8 @@ Optional `seperator` can be defined, which will be placed between each iteration
 Iteration 0
 Iteration 1
 Iteration 2
-``` 
+```
+
 
 ---
 ##### Input
@@ -166,7 +173,8 @@ Iteration 2
 ##### Output
 ```
 ['item0', 'item1', reserved, 'item2', reserved, reserved, 'item3', reserved, reserved, reserved, 'item4']
-``` 
+```
+
 <br><br><br>
 ### 〈ifιconditionιifTrueιifFalse〉
 If `condition` is true (checked by evaluating as javascript), returns `ifTrue`. Otherwise returns `ifFalse`.  
@@ -180,7 +188,8 @@ If `condition` is true (checked by evaluating as javascript), returns `ifTrue`. 
 ##### Output
 ```
 Hey! Ho! Hey! Ho! Hey! 
-``` 
+```
+
 <br><br><br>
 ### 〈indexιindexιelement 0ιelement 1ιelement 2ι...〉
 Return `index` element given as next arguments. Overflowing is completely safe, and defaults to "".
@@ -193,7 +202,8 @@ Return `index` element given as next arguments. Overflowing is completely safe, 
 ##### Output
 ```
 abc
-``` 
+```
+
 <br><br><br>
 ### 〈roundιvalueιprecision〉
 Rounds `value` with given `precision`. If `precision` is not given, it will just round to nearest integer.
@@ -206,7 +216,8 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ##### Output
 ```
 [0,1,3,4,5,7]
-``` 
+```
+
 
 ---
 ##### Input
@@ -216,7 +227,8 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ##### Output
 ```
 0 -> 0; 0.1 -> 0; 0.2 -> 0.25; 0.30000000000000004 -> 0.25; 0.4 -> 0.5; 0.5 -> 0.5; 0.6000000000000001 -> 0.5; 0.7000000000000001 -> 0.75; 0.8 -> 0.75; 0.9 -> 1; 1 -> 1; 1.1 -> 1
-``` 
+```
+
 <br><br><br>
 ### 〈toFileιfilenameιcontent〉
 Saves `content` to a file with path `filename`.
@@ -230,14 +242,16 @@ unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍna
 ##### Output
 ```
 unimplemented = {sigma: true, deltoid: true, banana-shaped: true, inverse: true}
-``` todo.txt
+```
+todo.txt
 ```
 Implement sigma feature
 Implement deltoid feature
 Implement banana-shaped feature
 Implement inverse feature
 
-``` 
+```
+
 
 ---
 ##### Input
@@ -248,13 +262,16 @@ Implement inverse feature
 file0
 ```
 0: 0, 0: 1, 0: 2, 0: 3, 
-``` file1
+```
+file1
 ```
 1: 0, 1: 1, 1: 2, 1: 3, 
-``` file2
+```
+file2
 ```
 2: 0, 2: 1, 2: 2, 2: 3, 
-``` 
+```
+
 <br><br><br>
 ### 〈varιnameιoperation〉
 Returns variable with given `name`. If variable doesn't exist, "" will be returned instead.  
@@ -272,7 +289,8 @@ Iteration 0
 Iteration 1
 Iteration 2
 
-``` 
+```
+
 
 ---
 ##### Input
@@ -288,5 +306,6 @@ Iteration 5
 Iteration 7
 Iteration 9
 
-``` 
+```
+
 <br><br><br>
