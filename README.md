@@ -61,8 +61,6 @@ You can also expand this structure into `〈commandNameᛍvariableNameιparam 1
 The last special character is `⦻`. It only appears in the parsing result, and represents an error. Remember that this symbol doesn't necessarily mean that an error occurred in this spot, it could have happened deeper in the syntax and then cascaded a few layers up.
 
 ## Commands
-
-
 ### 〈=ιinner〉
 Doesn't do anything on its own, it simply returns its first argument.
 
@@ -75,9 +73,7 @@ Doesn't do anything on its own, it simply returns its first argument.
 ```
 123
 ```
-
-
-
+<br><br><br>
 ### 〈caseιcaseTypeιtext〉
 Changes case styling of `text` to `caseType`. Possible styles include `lower`, `upper`, `title`, `camel`, `pascal`, `snake`, `kebab` and `none`.
 
@@ -108,9 +104,7 @@ Kebab: some-example-text
 ```
 [{filename: 'amazing_pig.json', display: 'Amazing Pig'}, {filename: 'cool_bovine.json', display: 'Cool Bovine'}, {filename: 'crazy_axolotl.json', display: 'Crazy Axolotl'}]
 ```
-
-
-
+<br><br><br>
 ### 〈evalιcode〉
 Evaluates javascript passed as `code`. Especially useful for mathematical operations.
 
@@ -136,9 +130,7 @@ Evaluates javascript passed as `code`. Especially useful for mathematical operat
 23+4*1=27
 23+4*2=31
 ```
-
-
-
+<br><br><br>
 ### 〈forιiteratorNameιnιcontentιseperator〉
 Repeats `n` times its `content`. Loop index (0-based) can be accessed as variable `iteratorName`.  
 Optional `seperator` can be defined, which will be placed between each iteration. In here variable `iteratorName` is also present, and represents loop index of the previous element.
@@ -175,9 +167,7 @@ Iteration 2
 ```
 ['item0', 'item1', reserved, 'item2', reserved, reserved, 'item3', reserved, reserved, reserved, 'item4']
 ```
-
-
-
+<br><br><br>
 ### 〈ifιconditionιifTrueιifFalse〉
 If `condition` is true (checked by evaluating as javascript), returns `ifTrue`. Otherwise returns `ifFalse`.  
 `ifFalse` is potional and defaults to "".
@@ -191,9 +181,7 @@ If `condition` is true (checked by evaluating as javascript), returns `ifTrue`. 
 ```
 Hey! Ho! Hey! Ho! Hey! 
 ```
-
-
-
+<br><br><br>
 ### 〈indexιindexιelement 0ιelement 1ιelement 2ι...〉
 Return `index` element given as next arguments. Overflowing is completely safe, and defaults to "".
 
@@ -206,9 +194,7 @@ Return `index` element given as next arguments. Overflowing is completely safe, 
 ```
 abc
 ```
-
-
-
+<br><br><br>
 ### 〈roundιvalueιprecision〉
 Rounds `value` with given `precision`. If `precision` is not given, it will just round to nearest integer.
 
@@ -231,9 +217,7 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ```
 0 -> 0; 0.1 -> 0; 0.2 -> 0.25; 0.30000000000000004 -> 0.25; 0.4 -> 0.5; 0.5 -> 0.5; 0.6000000000000001 -> 0.5; 0.7000000000000001 -> 0.75; 0.8 -> 0.75; 0.9 -> 1; 1 -> 1; 1.1 -> 1
 ```
-
-
-
+<br><br><br>
 ### 〈toFileιfilenameιcontent〉
 Saves `content` to a file with path `filename`.
 
@@ -271,9 +255,7 @@ file0
 ```
 2: 0, 2: 1, 2: 2, 2: 3, 
 ```
-
-
-
+<br><br><br>
 ### 〈varιnameιoperation〉
 Returns variable with given `name`. If variable doesn't exist, "" will be returned instead.  
 Optional `operation` can be defined, which will be added at the end of the current value and then evaluated. This doesn't change the actual value of the variable, only the return value of this command.
@@ -307,3 +289,4 @@ Iteration 7
 Iteration 9
 
 ```
+<br><br><br>

@@ -46,14 +46,13 @@ function makeCommandReadme(name, comm) {
   
   
   return `
-
-
 ### ${title}
 ${description}`+(examples?`
 
 #### Examples
 ${examples}
-`:"")
+`:"")+
+"<br><br><br>"
 }
 
 function updateSymbols(string, symbolsVersion) {
