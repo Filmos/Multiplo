@@ -15,11 +15,11 @@ This will add a function which converts currently selected text (`multiplo:parse
 
 Following keymap is recommended:
 ```cson 
-"alt-[": 'multiplo:create-empty' 
-"alt-]": 'multiplo:add-right' 
-"alt-,": 'multiplo:add-split' 
-"alt-'": 'multiplo:add-var' 
-"alt-enter": 'multiplo:parse' 
+"alt-[": 'multiplo:create-empty'   
+"alt-]": 'multiplo:add-right'   
+"alt-,": 'multiplo:add-split'   
+"alt-'": 'multiplo:add-var'   
+"alt-enter": 'multiplo:parse'   
 ```
 
 ### Custom
@@ -33,11 +33,11 @@ As it was said earlier, you can use this tool in your own way by directly refere
 This is an object containing symbols used for syntax. If for some reason you don't like the default ones, this is the place to change them.
 
 In this documentation, following symbols are used:
-**left** - `〈`
-**right** - `〉`
-**split** - `ι`
-**var** - `ᛍ`
-**error** - `⦻`
+**left** - `〈`  
+**right** - `〉`  
+**split** - `ι`  
+**var** - `ᛍ`  
+**error** - `⦻`  
 
 ##### Report
 This is an object containing different functions used when something is wrong with parsed syntax.  
