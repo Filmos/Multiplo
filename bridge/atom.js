@@ -1,9 +1,10 @@
-let symbols = {left: "〈", right:"〉", split:"ᛙ", var:"ᛍ"}
+let multiplo = require('./../parser')
+let symbols = multiplo.defaultOptions.symbols
 let options = {
   symbols: symbols, 
   report: {
-    error: (s, a=[])=>{atom.notifications.addError(s);console.error(s,...a);return errorFlag},
-    warn: (s)=>{atom.notifications.addWarning(s);console.warn(s)}
+    error: (s, a=[])=>{atom.notifications.addError(s); return multiplo.defaultOptions.report.error(s, a)},
+    warn: (s)=>{atom.notifications.addWarning(s); return multiplo.defaultOptions.warn.error(s, a)}
   }
 }
 
@@ -16,12 +17,20 @@ let registerCommands = () => {
     })
   })
   
+  atom.commands.add('atom-text-editor', 'multiplo:add-right', () => {
+    editor = atom.workspace.getActiveTextEditor()
+    editor.mutateSelectedText((sel, ind) => {
+      sel.insertText(symbols.right)
+    })
+  })
+  
   atom.commands.add('atom-text-editor', 'multiplo:add-split', () => {
     editor = atom.workspace.getActiveTextEditor()
     editor.mutateSelectedText((sel, ind) => {
       sel.insertText(symbols.split)
     })
   })
+  
   
   atom.commands.add('atom-text-editor', 'multiplo:add-var', () => {
     editor = atom.workspace.getActiveTextEditor()
@@ -31,12 +40,11 @@ let registerCommands = () => {
   })
   
   
-  multiploParser = require('./../parser')
   atom.commands.add('atom-text-editor', 'multiplo:parse', () => {
     editor = atom.workspace.getActiveTextEditor()
     editor.mutateSelectedText((sel, ind) => {
-      let parsed = multiploParser(sel.getText(), options)
-      if(parsed && parsed !== errorFlag) sel.insertText(parsed, {select: true})
+      let parsed = multiplo.parse(sel.getText(), options)
+      if(parsed) sel.insertText(parsed, {select: true})
     })
   })
 }
