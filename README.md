@@ -191,8 +191,8 @@ Hey! Ho! Hey! Ho! Hey!
 ```
 
 <br><br><br>
-### 〈indexιindexιelement 0ιelement 1ιelement 2ι...〉
-Return `index` element given as next arguments. Overflowing is completely safe, and defaults to "".
+### 〈indexιindex numberιelement 0ιelement 1ιelement 2ι...〉
+Return `index number` element given as next arguments. Overflowing is completely safe, and defaults to "".
 
 #### Examples
 ##### Input
@@ -270,6 +270,49 @@ Implement inverse feature
 *file2*
 ```
 2: 0, 2: 1, 2: 2, 2: 3, 
+```
+
+<br><br><br>
+### 〈uidιpatternιvalue〉
+Generate uid in given `pattern`, where each alpha-numeric character represents max value for this spot. If `value` isn't given, a random one will be automatically generated.
+
+#### Examples
+##### Input
+```
+〈forιiι9ι〈uidιFFF-ff.f〉ι
+〉
+```
+##### Output
+```
+D44-3d.0
+1A9-de.f
+5A7-3f.1
+60D-b8.e
+EDF-98.3
+206-9f.b
+2CD-97.d
+2F0-84.e
+BEA-dc.f
+```
+
+
+---
+##### Input
+```
+〈forιiι9ι〈uidι321ι〈varιi〉〉ι
+〉
+```
+##### Output
+```
+000
+001
+010
+011
+020
+021
+100
+101
+110
 ```
 
 <br><br><br>
