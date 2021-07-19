@@ -205,6 +205,20 @@ abc
 ```
 
 <br><br><br>
+### 〈romanιnumber〉
+Convert `number` into roman numerals.
+
+#### Examples
+##### Input
+```
+〈forιiι20ι〈romanι〈varιiι+1〉〉ι, 〉
+```
+##### Output
+```
+I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII, XVIII, XIX, XX
+```
+
+<br><br><br>
 ### 〈roundιvalueιprecision〉
 Rounds `value` with given `precision`. If `precision` is not given, it will just round to nearest integer.
 
@@ -284,15 +298,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-D44-3d.0
-1A9-de.f
-5A7-3f.1
-60D-b8.e
-EDF-98.3
-206-9f.b
-2CD-97.d
-2F0-84.e
-BEA-dc.f
+552-ad.6
+506-29.8
+FE2-7a.f
+4F2-40.3
+5BA-dd.d
+3AF-a7.4
+9ED-b1.5
+CEC-69.8
+695-09.4
 ```
 
 
