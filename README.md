@@ -61,6 +61,20 @@ You can also expand this structure into `〈commandNameᛍvariableNameιparam 1
 The last special character is `⦻`. It only appears in the parsing result, and represents an error. Remember that this symbol doesn't necessarily mean that an error occurred in this spot, it could have happened deeper in the syntax and then cascaded a few layers up.
 
 ## Commands
+### 〈-ιcomment〉
+Ignores anything inside `comment`, useful for writing comments.
+
+#### Examples
+##### Input
+```
+Visible text 〈-ιremember to buy milk 〉is all you see
+```
+##### Output
+```
+Visible text is all you see
+```
+
+<br><br><br>
 ### 〈=ιinner〉
 Doesn't do anything on its own, it simply returns its first argument.
 
@@ -279,6 +293,22 @@ abc
 ```
 
 <br><br><br>
+### 〈readSpaceιspacename〉
+Returns contents of space with name `spacename`.
+
+#### Examples
+##### Input
+```
+〈forιiι5ιHi 〈indexᛍnameι〈varιi〉ιAdamιMonikaιStefanιRichardιBob〉! 〈toSpaceιgreetedι〈varιname〉, 〉〉
+Greeted 〈readSpaceιgreeted〉
+```
+##### Output
+```
+Hi Adam! Hi Monika! Hi Stefan! Hi Richard! Hi Bob! 
+Greeted Adam, Monika, Stefan, Richard, Bob, 
+```
+
+<br><br><br>
 ### 〈romanιnumber〉
 Convert `number` into roman numerals.
 
@@ -420,6 +450,22 @@ Implement inverse feature
 ```
 
 <br><br><br>
+### 〈toSpaceιspacenameιcontent〉
+Adds `content` to a space with name `spacename`, which can later be accessed with `readSpace` command.
+
+#### Examples
+##### Input
+```
+〈forιiι5ιHi 〈indexᛍnameι〈varιi〉ιAdamιMonikaιStefanιRichardιBob〉! 〈toSpaceιgreetedι〈varιname〉, 〉〉
+Greeted 〈readSpaceιgreeted〉
+```
+##### Output
+```
+Hi Adam! Hi Monika! Hi Stefan! Hi Richard! Hi Bob! 
+Greeted Adam, Monika, Stefan, Richard, Bob, 
+```
+
+<br><br><br>
 ### 〈uidιpatternιvalue〉
 Generate uid in given `pattern`, where each alpha-numeric character represents max value for this spot. If `value` isn't given, a random one will be automatically generated.
 
@@ -431,15 +477,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-A78-76.f
-9FA-bc.b
-2D4-a4.6
-6A6-5e.7
-518-4f.6
-AC0-f8.b
-8E1-bb.a
-FFA-91.1
-C0F-45.7
+FDF-01.d
+195-33.8
+A1E-3b.e
+093-c6.5
+8C9-c7.4
+60F-6a.f
+C01-b9.4
+624-2e.9
+AAA-67.0
 ```
 
 

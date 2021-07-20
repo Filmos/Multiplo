@@ -34,37 +34,6 @@ function funcStacker(ar) {
 }
 
 
-class State {
-  constructor(source) {
-    this.data = {}
-    for(let cat in source) 
-      this.data[cat] = {...source[cat]}
-  }
-  
-  get(cat, name) {
-    return (this.data[cat]?this.data[cat][name]:undefined)
-  }
-  set(cat, name, value) {
-    let newData = {...this.data}
-    newData[cat] = {...this.data[cat]}
-    newData[cat][name] = value
-    return this.finalizeChange(newData)
-  }
-  setMulti(cat, values) {
-    let newData = {...this.data}
-    newData[cat] = {...this.data[cat],...values}
-    return this.finalizeChange(newData)
-  }
-  
-  finalizeChange(data) {
-    if(/*scoped state*/ false) return new State(newData)
-    
-    this.data = data
-    return this
-  }
-}
-
-
 function fullParse(string, options) {
   options = {symbols: {}, report: {}, ...options}
   symbols = {...defaultOptions.symbols, ...options.symbols}
@@ -77,7 +46,55 @@ function fullParse(string, options) {
   
   let globalHandles = {files: {}}
   let index = 0  
-     
+  
+  
+  class State {
+    constructor(source) {
+      this.data = {}
+      for(let cat in source) 
+        this.data[cat] = {...source[cat]}
+    }
+    setGlobal() {
+      this.global = true
+    }
+    
+    
+    get(cat, name) {
+      let local = (this.data[cat]?this.data[cat][name]:undefined) 
+      if(local===undefined && !this.global) return globalHandles.state.get(cat, name)
+      return local
+    }
+    set(cat, name, value) {
+      let newData = {...this.data}
+      newData[cat] = {...this.data[cat]}
+      newData[cat][name] = value
+      return this.finalize(newData)
+    }
+    setMulti(cat, values) {
+      let newData = {...this.data}
+      newData[cat] = {...this.data[cat],...values}
+      return this.finalize(newData)
+    }
+    
+    push(...args) {
+      globalHandles.state.set(...args)
+      return this
+    }
+    pushMulti(...args) {
+      globalHandles.state.setMulti(...args)
+      return this
+    }
+    
+    finalize(data) {
+      if(!this.global) return new State(data)
+      this.data = data
+      return this
+    }
+  }
+  globalHandles.state = new State()
+  globalHandles.state.setGlobal()
+  
+  
   let parsedText = parse()(new State())
   return {...globalHandles.files, "": parsedText.value}
   
@@ -141,7 +158,7 @@ function fullParse(string, options) {
       
       
       let ret = {value: res, state: newState}
-      if(retName!=undefined) ret.state = (newState || state).set("variable", retName, res)
+      if(retName!=undefined) ret.state = (newState || state).push("variable", retName, res)
       
       return ret
     }

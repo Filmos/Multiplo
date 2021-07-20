@@ -3,7 +3,7 @@ function parse(state, args, report) {
     namespace: args[1](state),
     code: args[2]
   }
-  return {"": "", state: state.set("function", args[0](state), definition)}
+  return {"": "", state: state.push("function", args[0](state), definition)}
 }
 module.exports = {
   code: parse,
