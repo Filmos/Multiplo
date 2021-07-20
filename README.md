@@ -137,6 +137,20 @@ less (0), less (1), less (2), less (3), equal (4), greater (5), greater (6), gre
 ```
 
 <br><br><br>
+### 〈countιpatternιtext〉
+Counts how many times `pattern` appears in `text`.
+
+#### Examples
+##### Input
+```
+〈countι,ιAlfa,Beta,Gamma,Delta〉
+```
+##### Output
+```
+3
+```
+
+<br><br><br>
 ### 〈defιnameιparameterNameιcode〉
 Defines a function with `name` to be used with `run` command. When function is run, `code` is executed with all parameters from the run command saved as variables with names `parameterName`_0, `parameterName`_1, `parameterName`_2... Variable `parameterName`_count is also available.
 
@@ -477,15 +491,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-FDF-01.d
-195-33.8
-A1E-3b.e
-093-c6.5
-8C9-c7.4
-60F-6a.f
-C01-b9.4
-624-2e.9
-AAA-67.0
+FA1-2d.3
+C89-ff.8
+2B7-cc.e
+39E-bb.7
+0A0-63.a
+FE1-e7.5
+C6C-c3.6
+5CB-59.2
+EB1-b3.4
 ```
 
 
