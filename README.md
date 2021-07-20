@@ -108,6 +108,65 @@ Kebab: some-example-text
 ```
 
 <br><br><br>
+### 〈defιnameιparameterNameιcode〉
+Defines a function with `name` to be used with `run` command. When function is run, `code` is executed with all parameters from the run command saved as variables with names `parameterName`_0, `parameterName`_1, `parameterName`_2... Variable `parameterName`_count is also available.
+
+#### Examples
+##### Input
+```
+〈defιshoutιparιO what a magic 〈varιpar_0〉 I see there! Oh, and a 〈varιpar_1〉! And 〈varιpar_countι-2〉 more beautiful creatures!〉
+〈runιshoutιhorseιrabbitιcowιsheep〉
+```
+##### Output
+```
+
+O what a magic horse I see there! Oh, and a rabbit! And 2 more beautiful creatures!
+```
+
+
+---
+##### Input
+```
+〈defιReport ChangesιpιThere 〈ifι〈varιp_0〉==0ιwere noι〈ifι〈varιp_0〉==1ιwas 1ιwere 〈varιp_0〉〉〉 〈varιp_1〉 change〈ifι〈varιp_0〉!=1ιs〉〈ifι〈varιp_0〉>0ι, proceed with caution〉.〉
+Version 1.0.0
+  〈runιReport Changesι3ιbreaking〉
+  〈runιReport Changesι7ιmajor〉
+Version 0.4.2
+  〈runιReport Changesι0ιmajor〉
+Version 0.4.0
+  〈runιReport Changesι1ιbreaking〉
+  〈runιReport Changesι2ιexperimental〉
+```
+##### Output
+```
+
+Version 1.0.0
+  There were 3 breaking changes, proceed with caution.
+  There were 7 major changes, proceed with caution.
+Version 0.4.2
+  There were no major changes.
+Version 0.4.0
+  There was 1 breaking change, proceed with caution.
+  There were 2 experimental changes, proceed with caution.
+```
+
+
+---
+##### Input
+```
+〈defιfancy_listιparι〈forιiι〈varιpar_count〉ι> 〈varιpar_〈varιi〉〉ι
+〉〉〈runιfancy_listιItem 1ιItem 2ιItem PIιSomething elseιAnd this as well〉
+```
+##### Output
+```
+> Item 1
+> Item 2
+> Item PI
+> Something else
+> And this as well
+```
+
+<br><br><br>
 ### 〈evalιcode〉
 Evaluates javascript passed as `code`. Especially useful for mathematical operations.
 
@@ -244,6 +303,65 @@ Rounds `value` with given `precision`. If `precision` is not given, it will just
 ```
 
 <br><br><br>
+### 〈runιnameιparameter 0ιparameter 1ιparameter 2ι...〉
+Calls function with `name` (previously defined with `def` command). Parameters are passed directly into that function.
+
+#### Examples
+##### Input
+```
+〈defιshoutιparιO what a magic 〈varιpar_0〉 I see there! Oh, and a 〈varιpar_1〉! And 〈varιpar_countι-2〉 more beautiful creatures!〉
+〈runιshoutιhorseιrabbitιcowιsheep〉
+```
+##### Output
+```
+
+O what a magic horse I see there! Oh, and a rabbit! And 2 more beautiful creatures!
+```
+
+
+---
+##### Input
+```
+〈defιReport ChangesιpιThere 〈ifι〈varιp_0〉==0ιwere noι〈ifι〈varιp_0〉==1ιwas 1ιwere 〈varιp_0〉〉〉 〈varιp_1〉 change〈ifι〈varιp_0〉!=1ιs〉〈ifι〈varιp_0〉>0ι, proceed with caution〉.〉
+Version 1.0.0
+  〈runιReport Changesι3ιbreaking〉
+  〈runιReport Changesι7ιmajor〉
+Version 0.4.2
+  〈runιReport Changesι0ιmajor〉
+Version 0.4.0
+  〈runιReport Changesι1ιbreaking〉
+  〈runιReport Changesι2ιexperimental〉
+```
+##### Output
+```
+
+Version 1.0.0
+  There were 3 breaking changes, proceed with caution.
+  There were 7 major changes, proceed with caution.
+Version 0.4.2
+  There were no major changes.
+Version 0.4.0
+  There was 1 breaking change, proceed with caution.
+  There were 2 experimental changes, proceed with caution.
+```
+
+
+---
+##### Input
+```
+〈defιfancy_listιparι〈forιiι〈varιpar_count〉ι> 〈varιpar_〈varιi〉〉ι
+〉〉〈runιfancy_listιItem 1ιItem 2ιItem PIιSomething elseιAnd this as well〉
+```
+##### Output
+```
+> Item 1
+> Item 2
+> Item PI
+> Something else
+> And this as well
+```
+
+<br><br><br>
 ### 〈toFileιfilenameιcontent〉
 Saves `content` to a file with path `filename`.
 
@@ -255,7 +373,7 @@ unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍna
 ```
 ##### Output
 ```
-unimplemented = {sigma: true, deltoid: true, banana-shaped: true, inverse: true}
+unimplemented = {: true, : true, : true, : true}
 ```
 *todo.txt*
 ```
@@ -298,15 +416,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-552-ad.6
-506-29.8
-FE2-7a.f
-4F2-40.3
-5BA-dd.d
-3AF-a7.4
-9ED-b1.5
-CEC-69.8
-695-09.4
+A46-d6.b
+627-5c.6
+45F-41.3
+D6C-39.7
+4DF-c2.1
+815-c3.6
+FC6-0e.8
+3B1-ad.4
+144-ab.f
 ```
 
 

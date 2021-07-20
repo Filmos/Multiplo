@@ -25,10 +25,35 @@ function funcStacker(ar) {
       if(!a) continue
       if(isFunction(a)) {
         let v = a(state)
-        res += (v||"")
+        res += (v.value||"")
+        if(v.state) state = v.state
       } else res += a
     }
     return res
+  }
+}
+
+
+class State {
+  constructor(source) {
+    this.data = {}
+    for(let cat in source) 
+      this.data[cat] = {...source[cat]}
+  }
+  
+  get(cat, name) {
+    return (this.data[cat]?this.data[cat][name]:undefined)
+  }
+  set(cat, name, value) {
+    let newData = {...this.data}
+    newData[cat] = {...this.data[cat]}
+    newData[cat][name] = value
+    return new State(newData)
+  }
+  setMulti(cat, values) {
+    let newData = {...this.data}
+    newData[cat] = {...this.data[cat],...values}
+    return new State(newData)
   }
 }
 
@@ -46,8 +71,8 @@ function fullParse(string, options) {
   let globalHandles = {files: {}}
   let index = 0  
      
-  let parsedText = parse()({})
-  return {...globalHandles.files, "": parsedText}
+  let parsedText = parse()(new State())
+  return {...globalHandles.files, "": parsedText.value}
   
   function parse() {
     if(!raw[index].startsWith(symbols.left)) return report.error("Started bracket without an actual bracket: "+raw[index], [raw])
@@ -93,9 +118,11 @@ function fullParse(string, options) {
     
     return function(state) {
       let res = ""
+      let newState = undefined
       try {
         res = retFunc(state, args, report)
         if(isObject(res)) {
+          newState = res.state
           for(let file in res.files)
             globalHandles.files[file] = (globalHandles.files[file]||"")+res.files[file]
             
@@ -105,8 +132,11 @@ function fullParse(string, options) {
         res += report.error('Error occured in "'+type+'" command: '+e)
       }
       
-      if(retName!=undefined) state[retName] = res
-      return res
+      
+      let ret = {value: res, state: newState}
+      if(retName!=undefined) ret.state = (newState || state).set("variable", retName, res)
+      
+      return ret
     }
   }
 }

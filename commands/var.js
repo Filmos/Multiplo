@@ -2,7 +2,7 @@ function parse(state, args, report) {
   let val = args[0](state)
   if(report.isError(val)) return report.error("Error inside variable name")
   
-  val = state[val]
+  val = state.get("variable", val)
   if(val===undefined) return ""
   
   if(args[1]===undefined) return val

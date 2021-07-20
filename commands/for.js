@@ -8,8 +8,7 @@ function parse(state, args, report) {
   
   let res = ""
   for(let i=0;i<maxI;i++) {
-    let newState = {...state}
-    newState[iterator] = i
+    let newState = state.set("variable", iterator, i)
     
     res += args[2](newState) + (i+1<maxI?separator(newState):"")
   }

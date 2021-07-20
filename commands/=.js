@@ -1,4 +1,4 @@
-function parse(state, args) {
+function parse(state, args, report) {
   return args[0](state)
 }
 module.exports = {
