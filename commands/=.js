@@ -6,5 +6,5 @@ module.exports = {
   arguments: ["inner"],
   description: "Doesn't do anything on its own, it simply returns its first argument.",
   examples: ["〈=ι123ι234〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

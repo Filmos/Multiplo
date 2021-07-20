@@ -20,5 +20,5 @@ module.exports = {
   arguments: ["iteratorName", "n", "content", "seperator"],
   description: "Repeats $2 times its $3. Loop index (0-based) can be accessed as variable $1.  \nOptional $4 can be defined, which will be placed between each iteration. In here variable $1 is also present, and represents loop index of the previous element.",
   examples: ["〈forιiι15ι+-〉", "〈forιiι3ιIteration 〈varιi〉ι\n〉", "[〈forιiι5ι'item〈varιi〉'ι〈forιjι〈varιiι+1〉ι, ιreserved〉〉]"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

@@ -39,5 +39,5 @@ module.exports = {
   arguments: ["pattern", "value"],
   description: "Generate uid in given $1, where each alpha-numeric character represents max value for this spot. If $2 isn't given, a random one will be automatically generated.",
   examples: ["〈forιiι9ι〈uidιFFF-ff.f〉ι\n〉","〈forιiι9ι〈uidι321ι〈varιi〉〉ι\n〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

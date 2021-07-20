@@ -24,7 +24,7 @@ function makeCommandReadme(name, comm) {
   
   let examples = []
   for(let ex of (comm.examples || [])) {
-    let updated = updateSymbols(ex, comm.examplesVersion)
+    let updated = updateSymbols(ex, comm.version)
     let parsed = parser.parse(updated)
     
     let currentExample = '##### Input\n```\n'+updated+'\n```\n##### Output\n'
@@ -43,6 +43,7 @@ function makeCommandReadme(name, comm) {
     description = description.replace(new RegExp("\\$"+(i+1), 'g'), "`"+args[i]+"`")
   else if(examples) description = "No description is available for this command"
   else description = "No documentation is available for this command"
+  description = updateSymbols(description, comm.version)
   
   
   return `

@@ -8,5 +8,5 @@ module.exports = {
   arguments: ["code"],
   description: "Evaluates javascript passed as $1. Especially useful for mathematical operations.",
   examples: ["〈evalι123+5*234〉","〈forιiι3ι23+4*〈varιi〉=〈evalι23+4*〈varιi〉〉ι\n〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

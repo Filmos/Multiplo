@@ -29,7 +29,7 @@ function parse(state, args, report) {
     case "kebab":
       return textSplit.map(s => s.toLowerCase()).join("-")
     default:
-      return report.error('Error in text case snippet: "'+caseType+'" is not a valid case type')
+      return report.error('Error in text case command: "'+caseType+'" is not a valid case type')
   }
 }
 module.exports = {
@@ -37,5 +37,5 @@ module.exports = {
   arguments: ["caseType", "text"],
   description: "Changes case styling of $2 to $1. Possible styles include `lower`, `upper`, `title`, `camel`, `pascal`, `snake`, `kebab` and `none`.",
   examples: ["〈forιiι8ι〈indexᛍtypeι〈varιi〉ιNoneιLowerιUpperιTitleιCamelιPascalιSnakeιKebab〉: 〈caseι〈varιtype〉ιsOmE eXAmPlE TExT〉ι\n〉","[〈forιiι3ι{filename: '〈indexᛍfilenameι〈varιi〉ιamazing_pigιcool_bovineιcrazy_axolotl〉.json', display: '〈caseιtitleι〈varιfilename〉〉'}ι, 〉]"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

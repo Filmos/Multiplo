@@ -1,6 +1,6 @@
 function parse(state, args, report) {
   let num = args[0](state)
-  if(isNaN(parseInt(num))) return report.error('Error in roman snippet: "'+num+'" is not a number')
+  if(isNaN(parseInt(num))) return report.error('Error in roman command: "'+num+'" is not a number')
   num = parseInt(num)
   
   var digits = String(+num).split(""),
@@ -18,5 +18,5 @@ module.exports = {
   arguments: ["number"],
   description: "Convert $1 into roman numerals.",
   examples: ["〈forιiι20ι〈romanι〈varιiι+1〉〉ι, 〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

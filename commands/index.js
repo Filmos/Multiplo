@@ -11,5 +11,5 @@ module.exports = {
   arguments: ["index number", "element 0", "element 1", "element 2", "..."],
   description: "Return $1 element given as next arguments. Overflowing is completely safe, and defaults to \"\".",
   examples: ["〈forιiι3ι〈indexι〈varιi〉ιaιbιcιd〉〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }

@@ -12,6 +12,6 @@ module.exports = {
   arguments: ["filename","content"],
   description: "Saves $2 to a file with path $1.",
   examples: ["unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍnameι〈varιi〉ιsigmaιdeltoidιbanana-shapedιinverse〉 feature\n〉〈varιname〉: trueι, 〉}","〈forιiι3ι〈forιjι4ι〈toFileιfile〈varιi〉ι〈varιi〉: 〈varιj〉, 〉〉〉"],
-  examplesVersion: "〈〉ι"
+  version: "〈〉ιᛍ"
 }
 

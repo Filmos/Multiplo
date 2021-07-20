@@ -108,6 +108,21 @@ Kebab: some-example-text
 ```
 
 <br><br><br>
+### 〈compareιaιbιifLessιifEqualιifGreater〉
+Compares `a` and `b` and returns proper value (`a`<`b`: `ifLess`, `a`=`b`: `ifEqual`, `a`>`b`: `ifGreater`).  
+Shorthand for 〈ifι`a`<`b`ι`ifLess`ι〈ifι`a`>`b`ι`ifGreater`ι`ifEqual`〉〉
+
+#### Examples
+##### Input
+```
+〈forιiι10ι〈compareι〈varιi〉ι4ιlessιequalιgreater〉 (〈varιi〉)ι, 〉
+```
+##### Output
+```
+less (0), less (1), less (2), less (3), equal (4), greater (5), greater (6), greater (7), greater (8), greater (9)
+```
+
+<br><br><br>
 ### 〈defιnameιparameterNameιcode〉
 Defines a function with `name` to be used with `run` command. When function is run, `code` is executed with all parameters from the run command saved as variables with names `parameterName`_0, `parameterName`_1, `parameterName`_2... Variable `parameterName`_count is also available.
 
@@ -416,15 +431,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-D3A-a5.b
-F3C-43.c
-545-47.c
-871-d2.6
-A7C-e2.2
-26E-b8.e
-081-34.9
-45D-4d.e
-05C-a0.c
+A78-76.f
+9FA-bc.b
+2D4-a4.6
+6A6-5e.7
+518-4f.6
+AC0-f8.b
+8E1-bb.a
+FFA-91.1
+C0F-45.7
 ```
 
 
