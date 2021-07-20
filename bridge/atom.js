@@ -44,7 +44,7 @@ let registerCommands = () => {
     editor = atom.workspace.getActiveTextEditor()
     editor.mutateSelectedText((sel, ind) => {
       let parsed = multiplo.parse(sel.getText(), options)
-      if(parsed[""]) sel.insertText(parsed[""], {select: true})
+      if(parsed[""].trim()) sel.insertText(parsed[""], {select: true})
       
       if(Object.keys(parsed).length <= 1) return
       
