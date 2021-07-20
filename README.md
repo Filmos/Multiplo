@@ -373,7 +373,7 @@ unimplemented = {〈forιiι4ι〈toFileιtodo.txtιImplement 〈indexᛍna
 ```
 ##### Output
 ```
-unimplemented = {: true, : true, : true, : true}
+unimplemented = {sigma: true, deltoid: true, banana-shaped: true, inverse: true}
 ```
 *todo.txt*
 ```
@@ -416,15 +416,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-A46-d6.b
-627-5c.6
-45F-41.3
-D6C-39.7
-4DF-c2.1
-815-c3.6
-FC6-0e.8
-3B1-ad.4
-144-ab.f
+D3A-a5.b
+F3C-43.c
+545-47.c
+871-d2.6
+A7C-e2.2
+26E-b8.e
+081-34.9
+45D-4d.e
+05C-a0.c
 ```
 
 

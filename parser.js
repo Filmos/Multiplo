@@ -48,12 +48,19 @@ class State {
     let newData = {...this.data}
     newData[cat] = {...this.data[cat]}
     newData[cat][name] = value
-    return new State(newData)
+    return this.finalizeChange(newData)
   }
   setMulti(cat, values) {
     let newData = {...this.data}
     newData[cat] = {...this.data[cat],...values}
-    return new State(newData)
+    return this.finalizeChange(newData)
+  }
+  
+  finalizeChange(data) {
+    if(/*scoped state*/ false) return new State(newData)
+    
+    this.data = data
+    return this
   }
 }
 
