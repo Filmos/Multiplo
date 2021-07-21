@@ -421,6 +421,31 @@ Version 0.4.0
 ```
 
 <br><br><br>
+### 〈sliceιstartιendιstring〉
+Returns fragment of `string`, between `start` and `end` positions. Negative values can also be used for positions, and will be counted from the end of the `string`.
+
+#### Examples
+##### Input
+```
+〈sliceι1ι-1ι12345〉
+```
+##### Output
+```
+234
+```
+
+
+---
+##### Input
+```
+〈sliceι-2ιι12345〉
+```
+##### Output
+```
+45
+```
+
+<br><br><br>
 ### 〈toFileιfilenameιcontent〉
 Saves `content` to a file with path `filename`.
 
@@ -491,15 +516,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-FA1-2d.3
-C89-ff.8
-2B7-cc.e
-39E-bb.7
-0A0-63.a
-FE1-e7.5
-C6C-c3.6
-5CB-59.2
-EB1-b3.4
+E2E-38.7
+F96-4b.2
+4B6-37.2
+60E-dd.1
+606-df.8
+42A-bc.a
+EEA-d2.f
+C28-9b.0
+F77-2a.9
 ```
 
 

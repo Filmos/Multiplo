@@ -134,8 +134,9 @@ function fullParse(string, options) {
       if(comm.code && isFunction(comm.code)) retFunc = comm.code
       else 
         retFunc = ()=>{return report.error('Command "'+type+'" has invalid structure')}
-    } catch {
-      retFunc = ()=>{return report.error('Invalid command name "'+type+'"')}
+    } catch(e) {
+      if((""+e).startsWith("Error: Cannot find module")) retFunc = ()=>{return report.error('Invalid command name "'+type+'"')}
+      else retFunc = ()=>{return report.error('Error when parsing command file"'+type+'": '+e)}
     }
     
     
