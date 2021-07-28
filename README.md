@@ -421,6 +421,20 @@ Version 0.4.0
 ```
 
 <br><br><br>
+### 〈scrambleιtext〉
+Replaces characters in `text` with random ones from the same range.
+
+#### Examples
+##### Input
+```
+〈scrambleιThere are 235 D.O.G.S. active at this moment.〉
+```
+##### Output
+```
+Qnkem cku 418 W.O.H.T. tchmba rv fvck wapuhn.
+```
+
+<br><br><br>
 ### 〈sliceιstartιendιstring〉
 Returns fragment of `string`, between `start` and `end` positions. Negative values can also be used for positions, and will be counted from the end of the `string`.
 
@@ -516,15 +530,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-E2E-38.7
-F96-4b.2
-4B6-37.2
-60E-dd.1
-606-df.8
-42A-bc.a
-EEA-d2.f
-C28-9b.0
-F77-2a.9
+0B8-22.9
+B25-88.a
+FCF-de.2
+E50-04.d
+AE4-0f.3
+875-3b.b
+74D-40.c
+8E6-00.0
+24C-2a.1
 ```
 
 
