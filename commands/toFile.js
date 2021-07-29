@@ -1,9 +1,11 @@
-function parse(state, args, report) {
+function parse(state, args, report, tools) {
   let filename = args[0](state)
   if(report.isError(filename)) return report.error("Error inside filename")
   
   let files = {}
   files[filename] = args[1](state)
+  
+  if(!tools.saveFile) return report.error("Saving to additional files is not supported in this environment")
   
   return {"": "", files: files}
 }

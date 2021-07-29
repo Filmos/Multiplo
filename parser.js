@@ -35,9 +35,10 @@ function funcStacker(ar) {
 
 
 function fullParse(string, options) {
-  options = {symbols: {}, report: {}, ...options}
+  options = {symbols: {}, report: {}, tools: {}, ...options}
   symbols = {...defaultOptions.symbols, ...options.symbols}
   report = {...defaultOptions.report, ...options.report}
+  tools = {...defaultOptions.tools, ...options.tools}
   
   if(!string) return
   string = symbols.left+"="+symbols.split+string+symbols.right
@@ -95,8 +96,13 @@ function fullParse(string, options) {
   globalHandles.state.setGlobal()
   
   
+  
   let parsedText = parse()(new State())
-  return {...globalHandles.files, "": parsedText.value}
+  if(tools.saveFile) for(let path in globalHandles.files) {
+    tools.saveFile(path, globalHandles.files[path])
+  }
+  return parsedText.value
+  
   
   function parse() {
     if(!raw[index].startsWith(symbols.left)) return report.error("Started bracket without an actual bracket: "+raw[index], [raw])
@@ -145,7 +151,7 @@ function fullParse(string, options) {
       let res = ""
       let newState = undefined
       try {
-        res = retFunc(state, args, report)
+        res = retFunc(state, args, report, tools)
         if(isObject(res)) {
           newState = res.state
           for(let file in res.files)

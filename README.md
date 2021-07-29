@@ -431,7 +431,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Qnkem cku 418 W.O.H.T. tchmba rv fvck wapuhn.
+Lrcuk kbd 000 A.P.N.P. knjrrr ld sohl meuibv.
 ```
 
 <br><br><br>
@@ -530,15 +530,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-0B8-22.9
-B25-88.a
-FCF-de.2
-E50-04.d
-AE4-0f.3
-875-3b.b
-74D-40.c
-8E6-00.0
-24C-2a.1
+B51-f3.e
+725-36.a
+D69-95.a
+877-cb.8
+C00-f8.7
+2C9-a8.0
+5F7-89.d
+223-29.2
+CDC-02.3
 ```
 
 
