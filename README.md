@@ -307,6 +307,28 @@ abc
 ```
 
 <br><br><br>
+### 〈readFileιfilename〉
+Returns content of a file with path `filename`.
+
+#### Examples
+##### Input
+```
+DISCLAIMER: The following information hasn't been confirmed and may be false.
+
+〈readFileιsource.txt〉
+```
+*source.txt*
+```
+I like dogs
+```
+##### Output
+```
+DISCLAIMER: The following information hasn't been confirmed and may be false.
+
+I like dogs
+```
+
+<br><br><br>
 ### 〈readSpaceιspacename〉
 Returns contents of space with name `spacename`.
 
@@ -431,7 +453,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Lrcuk kbd 000 A.P.N.P. knjrrr ld sohl meuibv.
+Pibkw yjh 588 W.H.I.Q. kgmbhr jb elsy cmramv.
 ```
 
 <br><br><br>
@@ -530,15 +552,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-B51-f3.e
-725-36.a
-D69-95.a
-877-cb.8
-C00-f8.7
-2C9-a8.0
-5F7-89.d
-223-29.2
-CDC-02.3
+BA9-2d.3
+333-f3.2
+04E-e9.1
+055-da.a
+EED-60.1
+7B0-2e.7
+053-7b.1
+A31-3b.d
+44D-14.9
 ```
 
 

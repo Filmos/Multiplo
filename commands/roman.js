@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  let num = args[0](state)
+async function parse(state, args, report) {
+  let num = (await args[0](state))
   if(isNaN(parseInt(num))) return report.error('Error in roman command: "'+num+'" is not a number')
   num = parseInt(num)
   

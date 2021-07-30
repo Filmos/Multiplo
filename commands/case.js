@@ -1,6 +1,6 @@
-function parse(state, args, report) {
-  let caseType = args[0](state)
-  let text = args[1](state)
+async function parse(state, args, report) {
+  let caseType = (await args[0](state))
+  let text = (await args[1](state))
 
 
   switch(caseType.toLowerCase()) {

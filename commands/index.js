@@ -1,10 +1,10 @@
-function parse(state, args, report) {
-  let ind = args[0](state)
+async function parse(state, args, report) {
+  let ind = (await args[0](state))
   if(isNaN(parseInt(ind))) return report.error('Error in index command: "'+ind+'" is not a number')
   ind = parseInt(ind)+1
   
   if(ind==0 || !args[ind]) return ""
-  return args[ind](state)
+  return (await args[ind](state))
 }
 module.exports = {
   code: parse,

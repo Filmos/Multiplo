@@ -3,37 +3,48 @@ parser = require("./../parser.js")
 symbols = parser.defaultOptions.symbols
 
 
+async function createReadme() {
+  let fullREADME = (""+fs.readFileSync('readme_intro.md')).split("\n")
+  fullREADME = updateSymbols(fullREADME.slice(1).join("\n"), fullREADME[0])
 
-let fullREADME = (""+fs.readFileSync('readme_intro.md')).split("\n")
-fullREADME = updateSymbols(fullREADME.slice(1).join("\n"), fullREADME[0])
+  let commands = fs.readdirSync('./../commands/')
+  for(let file of commands) {
+    let comm = require("./../commands/"+file)
+    fullREADME += await makeCommandReadme(file.split(".")[0], comm)
+  };
 
-fs.readdirSync('./../commands/').forEach(file => {
-  let comm = require("./../commands/"+file)
-  fullREADME += makeCommandReadme(file.split(".")[0], comm)
-});
-
-fs.writeFile('./../README.md', fullREADME, function (err) {
-  if (err) return console.error(err);
-});
+  fs.writeFile('./../README.md', fullREADME, function (err) {
+    if (err) return console.error(err);
+  });
+}
+createReadme()
 
 
 
-function makeCommandReadme(name, comm) {
+async function makeCommandReadme(name, comm) {
   let args = comm.arguments || []
   let title = symbols.left+[name, ...args].join(symbols.split)+symbols.right
   
   let examples = []
   for(let ex of (comm.examples || [])) {
-    let outsideFiles = ""
+    let inputOutsideFiles = {}
+    let outputOutsideFiles = ""
+    
+    if(typeof ex === 'object' && ex !== null) {inputOutsideFiles = ex; ex = ex[""]}
     let updated = updateSymbols(ex, comm.version)
-    let parsed = parser.parse(updated, {tools: {
-      saveFile: (filename, content) => {outsideFiles += "*"+filename+'*\n```\n'+content+'\n```\n'}
+    let parsed = await parser.parse(updated, {tools: {
+      saveFile: (filename, content) => {outputOutsideFiles += "*"+filename+'*\n```\n'+content+'\n```\n'},
+      readFile: (filename) => inputOutsideFiles[filename]
     }})
     
     
-    let currentExample = '##### Input\n```\n'+updated+'\n```\n##### Output\n'
+    let currentExample = '##### Input\n```\n'+updated+'\n```\n'
+    for(let filename in inputOutsideFiles) if(filename != "")
+        currentExample += "*"+filename+'*\n```\n'+inputOutsideFiles[filename]+'\n```\n'
+    
+    currentExample+='##### Output\n'
     if(parsed) currentExample += '```\n'+parsed+'\n```\n'
-    currentExample += outsideFiles
+    currentExample += outputOutsideFiles
     
     
     examples.push(currentExample)

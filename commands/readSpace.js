@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  let spacename = args[0](state)
+async function parse(state, args, report) {
+  let spacename = (await args[0](state))
   if(report.isError(spacename)) return report.error("Error inside spacename")
   
   return state.get("space", spacename) || ""

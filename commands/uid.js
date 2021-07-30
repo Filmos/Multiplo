@@ -1,9 +1,9 @@
-function parse(state, args, report) {
-  let pattern = ""+args[0](state)
+async function parse(state, args, report) {
+  let pattern = ""+(await args[0](state))
   
   let val = 0
   if(args[1]) {
-    val = args[1](state)
+    val = (await args[1](state))
   } else {
     let maxVal = 1
     for(let p of pattern) {

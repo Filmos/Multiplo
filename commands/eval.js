@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  let val = args[0](state)
+async function parse(state, args, report) {
+  let val = (await args[0](state))
   try {return ""+eval(val)}
   catch(e) {return report.error('Error in eval command: '+e)}
 }

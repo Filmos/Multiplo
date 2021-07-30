@@ -1,6 +1,6 @@
-function parse(state, args, report) {
-  let iterator = args[0](state)
-  let maxI = args[1](state)
+async function parse(state, args, report) {
+  let iterator = (await args[0](state))
+  let maxI = (await args[1](state))
   if(isNaN(parseInt(maxI))) return report.error('Error in repeat command: "'+maxI+'" is not a number')
   
   let separator = ()=>""
@@ -10,7 +10,7 @@ function parse(state, args, report) {
   for(let i=0;i<maxI;i++) {
     let newState = state.set("variable", iterator, i)
     
-    res += args[2](newState) + (i+1<maxI?separator(newState):"")
+    res += (await args[2](newState)) + (i+1<maxI?(await separator(newState)):"")
   }
   
   return res

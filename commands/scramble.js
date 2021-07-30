@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  let pattern = ""+args[0](state)
+async function parse(state, args, report) {
+  let pattern = ""+(await args[0](state))
   
   let result = ""
   for(let p of pattern) {

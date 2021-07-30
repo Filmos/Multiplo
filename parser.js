@@ -9,7 +9,7 @@ let defaultOptions = {
 
 
 function isFunction(functionToCheck) {
- return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+ return functionToCheck && ({}.toString.call(functionToCheck) === '[object Function]' || {}.toString.call(functionToCheck) === '[object AsyncFunction]');
 }
 function isString(x) {
   return Object.prototype.toString.call(x) === "[object String]"
@@ -19,12 +19,12 @@ function isObject(x) {
 }
 
 function funcStacker(ar) {
-  return (state) => {
+  return async function(state) {
     let res = ""
     for(a of ar) {
       if(!a) continue
       if(isFunction(a)) {
-        let v = a(state)
+        let v = await a(state)
         res += (v.value||"")
         if(v.state) state = v.state
       } else res += a
@@ -34,7 +34,7 @@ function funcStacker(ar) {
 }
 
 
-function fullParse(string, options) {
+async function fullParse(string, options) {
   options = {symbols: {}, report: {}, tools: {}, ...options}
   symbols = {...defaultOptions.symbols, ...options.symbols}
   report = {...defaultOptions.report, ...options.report}
@@ -97,7 +97,7 @@ function fullParse(string, options) {
   
   
   
-  let parsedText = parse()(new State())
+  let parsedText = await parse()(new State())
   if(tools.saveFile) for(let path in globalHandles.files) {
     tools.saveFile(path, globalHandles.files[path])
   }
@@ -137,7 +137,7 @@ function fullParse(string, options) {
     let retFunc = ()=>{return report.error('Something weird happened')}
     try {
       let comm = require("./commands/"+type+".js")
-      if(comm.code && isFunction(comm.code)) retFunc = comm.code
+      if(isFunction(comm.code)) retFunc = comm.code
       else 
         retFunc = ()=>{return report.error('Command "'+type+'" has invalid structure')}
     } catch(e) {
@@ -147,11 +147,11 @@ function fullParse(string, options) {
     
     
     
-    return function(state) {
+    return async function(state) {
       let res = ""
       let newState = undefined
       try {
-        res = retFunc(state, args, report, tools)
+        res = await retFunc(state, args, report, tools)
         if(isObject(res)) {
           newState = res.state
           for(let file in res.files)

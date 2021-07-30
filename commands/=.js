@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  return args[0](state)
+async function parse(state, args, report) {
+  return (await args[0](state))
 }
 module.exports = {
   code: parse,

@@ -1,12 +1,12 @@
-function parse(state, args, report) {
-  let funcName = args[0](state)
+async function parse(state, args, report) {
+  let funcName = (await args[0](state))
   let func = state.get("function", funcName)
   if(!func) return report.error('Invalid function name "'+funcName+'"')
   
   let passedParams = {}
   passedParams[func.namespace+"_count"] = args.length-1
   for(let i=1;i<args.length;i++)
-    passedParams[func.namespace+"_"+(i-1)] = args[i](state)
+    passedParams[func.namespace+"_"+(i-1)] = (await args[i](state))
   
   return func.code(state.setMulti("variable", passedParams))
 }

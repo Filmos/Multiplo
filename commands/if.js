@@ -1,10 +1,10 @@
-function parse(state, args, report) {
-  let cond = args[0](state)
+async function parse(state, args, report) {
+  let cond = (await args[0](state))
   if(report.isError(cond)) return report.error("Error inside if condition")
   try {
     let retInd = (eval(cond)?1:2)
     if(!args[retInd]) return ""
-    let val = args[retInd](state)
+    let val = (await args[retInd](state))
     return val
   }
   catch(e) {return report.error('Error in if command: '+e)}

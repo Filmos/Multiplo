@@ -1,4 +1,4 @@
-function parse(state, args, report) {
+async function parse(state, args, report) {
   return ""
 }
 module.exports = {

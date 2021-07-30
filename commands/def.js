@@ -1,9 +1,9 @@
-function parse(state, args, report) {
+async function parse(state, args, report) {
   let definition = {
-    namespace: args[1](state),
+    namespace: (await args[1](state)),
     code: args[2]
   }
-  return {"": "", state: state.push("function", args[0](state), definition)}
+  return {"": "", state: state.push("function", (await args[0](state)), definition)}
 }
 module.exports = {
   code: parse,

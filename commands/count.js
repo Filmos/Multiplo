@@ -1,5 +1,5 @@
-function parse(state, args, report) {
-  return ((""+args[1](state)).match(new RegExp(""+args[0](state), "g")) || []).length
+async function parse(state, args, report) {
+  return ((""+(await args[1](state))).match(new RegExp(""+(await args[0](state)), "g")) || []).length
 }
 module.exports = {
   code: parse,
