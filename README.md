@@ -22,7 +22,7 @@ Following keymap is recommended:
 ```
 
 ### Custom
-As it was said earlier, you can use this tool in your own way by directly referencing `parser.js`. It exports two values - `defaultOptions`, which contains default options for the parser, and `parse(text, options)`, which is the function which transforms the text.   
+As it was said earlier, you can use this tool in your own way by directly referencing `parser.js`. It exports two values - `defaultOptions`, which contains default options for the parser, and `parse(text, options)`, which is the asynchronous function which transforms the text.   
 
 #### Parameters
 `Text` is a simple string in proper syntax (which is described in later chapters). 
@@ -44,12 +44,17 @@ This is an object containing different functions used when something is wrong wi
 
 `isError(value)` is a function which checks if value is actually an error. If you changed the return value of `error` function, you need to change this one to detect it.
 
+##### Tools
+This is an object containing functions that provide special functionality, like reading and writing files. All entries in this object are optional, but leaving them blank will make connected commands return errors instead of expected behavior. Those functions can be both synchronous and asynchronous.
+
+`saveFile(path, content)` - saves `content` to file with `path` (relative or absolute), no return value
+`readFile(path)` - returns content of file with `path` (relative or absolute)
+
 ### Return value
-This function return a single object, with keys being filenames (since syntax allows for saving to outside files as well) and values being the parsed text. Those filenames could be relative or absolute, depending on how they were used in raw text.  
-There is one special filename, `""`. It is always returned, and contains parsed text that wasn't saved in an outside file. In most cases, this is the value that you are looking for.
+This function return a single string being the parsed result of the commands.
 
 ### Help
-If all of this seems confusing, but you are still determined to write your own bridge instead of using an existing one, take a look at the `bridge` directory of this tool. It contains a few files (ok, a single one right now) that implement such bridges for different environments, which could be used as decent examples.
+If all of this seems confusing, but you are still determined to write your own bridge instead of using an existing one, take a look at the `bridge` directory of this tool. It contains a few files (ok, a single one right now) that implement such bridges for different environments, which could serve as decent examples.
 
 ## Syntax
 The whole syntax is based around a few special unicode characters - `〈`,`〉`,`ι`,`ᛍ`,`⦻`. Because those are very, very unlikely to appear in the files you are working on, there is no need to escape special characters (and in case they do appear, you can just change them in parser options).
@@ -453,7 +458,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Pibkw yjh 588 W.H.I.Q. kgmbhr jb elsy cmramv.
+Gmvao ycy 896 R.F.M.L. xndlii pa givy qjvjgq.
 ```
 
 <br><br><br>
@@ -552,15 +557,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-BA9-2d.3
-333-f3.2
-04E-e9.1
-055-da.a
-EED-60.1
-7B0-2e.7
-053-7b.1
-A31-3b.d
-44D-14.9
+FF3-16.c
+D2E-f9.7
+EB8-f8.5
+119-d9.0
+8BA-6d.8
+56D-ad.3
+3A0-9a.d
+AC0-ce.f
+D02-7a.2
 ```
 
 
