@@ -312,6 +312,29 @@ abc
 ```
 
 <br><br><br>
+### 〈jsonιvariableNameιjson〉
+Parses `json` and then saves the result as variables starting with `variableName`. Paths can be accessed by *`variableName`_path*, where *path* is a full path from the root with `.` being delimeters.  
+Additionally, for arrays present in the json property `length` is also available.
+
+#### Examples
+##### Input
+```
+〈jsonιparsedι{"a": 54, "b": [1, 2, "4"]}〉
+〈varιparsed_a〉
+〈varιparsed_b.0〉
+〈varιparsed_b〉
+〈varιparsed_b.length〉〉
+```
+##### Output
+```
+
+54
+1
+1,2,4
+3
+```
+
+<br><br><br>
 ### 〈readFileιfilename〉
 Returns content of a file with path `filename`.
 
@@ -458,7 +481,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Gmvao ycy 896 R.F.M.L. xndlii pa givy qjvjgq.
+Qhcnh lma 584 B.K.N.N. anpepb lt eqgb evydkj.
 ```
 
 <br><br><br>
@@ -557,15 +580,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-FF3-16.c
-D2E-f9.7
-EB8-f8.5
-119-d9.0
-8BA-6d.8
-56D-ad.3
-3A0-9a.d
-AC0-ce.f
-D02-7a.2
+2A1-72.6
+146-89.0
+F6B-91.9
+8FB-5a.6
+767-6e.2
+54B-0d.5
+629-b3.c
+9DC-e1.7
+6B5-8f.f
 ```
 
 

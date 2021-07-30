@@ -3,7 +3,8 @@ async function parse(state, args, report) {
     namespace: (await args[1](state)),
     code: args[2]
   }
-  return {"": "", state: state.push("function", (await args[0](state)), definition)}
+  state.push("function", (await args[0](state)), definition)
+  return ""
 }
 module.exports = {
   code: parse,
