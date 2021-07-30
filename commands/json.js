@@ -6,7 +6,7 @@ async function parse(state, args, report) {
       parsedParams[arg+path+key] = ""+json[key]
       if(Array.isArray(json[key])) parsedParams[arg+path+key+".length"] = json[key].length
       if(typeof json[key] === 'object' && json[key] !== null)
-        crawl(json[key], key+".")
+        crawl(json[key], path+key+".")
     }
   }
   
