@@ -335,6 +335,37 @@ Additionally, for arrays present in the json property `length` is also available
 ```
 
 <br><br><br>
+### 〈n〉
+Creates a newline.
+
+#### Examples
+##### Input
+```
+This only〈n〉looks like〈n〉a single line.
+```
+##### Output
+```
+This only
+looks like
+a single line.
+```
+
+
+---
+##### Input
+```
+ - [X] 〈replaceι〈n〉ι〈n〉 - [ ] ιReport an issue
+Fix the issue
+Close the issue〉
+```
+##### Output
+```
+ - [X] Report an issue
+ - [ ] Fix the issue
+ - [ ] Close the issue
+```
+
+<br><br><br>
 ### 〈readFileιfilename〉
 Returns content of a file with path `filename`.
 
@@ -495,7 +526,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Pxwpm enb 421 J.J.C.H. njeynh nk cdgy smgdta.
+Ttcbd qul 926 U.A.K.P. igykwe fg qyxu ceavsw.
 ```
 
 <br><br><br>
@@ -594,15 +625,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-53C-e1.7
-95F-64.f
-3A6-e2.b
-75D-d7.1
-B5B-22.3
-A7A-c7.c
-0C4-94.e
-C24-c5.8
-EF3-5e.a
+9D9-21.5
+021-1b.4
+547-f2.3
+B82-50.9
+7E3-d1.7
+432-11.b
+1CA-3f.0
+FDA-c9.d
+8E7-49.a
 ```
 
 

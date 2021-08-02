@@ -1,5 +1,8 @@
 async function parse(state, args, report) {
-  return ((""+(await args[1](state))).match(new RegExp(""+(await args[0](state)), "g")) || []).length
+  let regexp = ""+(await args[0](state))
+  regexp = regexp.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  regexp = regexp.replace(/\n/g, '\\n')
+  return ((""+(await args[1](state))).match(new RegExp(regexp, "g")) || []).length
 }
 module.exports = {
   code: parse,
