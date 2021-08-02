@@ -373,6 +373,20 @@ Greeted Adam, Monika, Stefan, Richard, Bob,
 ```
 
 <br><br><br>
+### 〈replaceιpatternιreplacementιtext〉
+Replaces all occurences of `pattern` in `text` with `replacement`, case sensitive.
+
+#### Examples
+##### Input
+```
+〈replaceιIιYouιI really like apples... I think.〉
+```
+##### Output
+```
+You really like apples... You think.
+```
+
+<br><br><br>
 ### 〈romanιnumber〉
 Convert `number` into roman numerals.
 
@@ -481,7 +495,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Qhcnh lma 584 B.K.N.N. anpepb lt eqgb evydkj.
+Pxwpm enb 421 J.J.C.H. njeynh nk cdgy smgdta.
 ```
 
 <br><br><br>
@@ -580,15 +594,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-2A1-72.6
-146-89.0
-F6B-91.9
-8FB-5a.6
-767-6e.2
-54B-0d.5
-629-b3.c
-9DC-e1.7
-6B5-8f.f
+53C-e1.7
+95F-64.f
+3A6-e2.b
+75D-d7.1
+B5B-22.3
+A7A-c7.c
+0C4-94.e
+C24-c5.8
+EF3-5e.a
 ```
 
 
