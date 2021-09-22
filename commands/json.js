@@ -16,7 +16,7 @@ async function parse(state, args, report) {
   }
   
   let json = await args[1](state)
-  json = JSON.parse(""+json)
+  json = eval("v="+json)
   crawl(json, "")
   
   state.pushMulti("variable", parsedParams)
