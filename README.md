@@ -323,7 +323,10 @@ Additionally, for arrays present in the json property `length` is also available
 〈varιparsed_a〉
 〈varιparsed_b.0〉
 〈varιparsed_b〉
-〈varιparsed_b.length〉〉
+〈varιparsed_b.length〉
+〈varιparsed_keys〉
+〈varιparsed_keys.0〉
+〈varιparsed_keys.length〉〉
 ```
 ##### Output
 ```
@@ -332,6 +335,9 @@ Additionally, for arrays present in the json property `length` is also available
 1
 1,2,4
 3
+a,b
+a
+2
 ```
 
 <br><br><br>
@@ -526,7 +532,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Ttcbd qul 926 U.A.K.P. igykwe fg qyxu ceavsw.
+Wfdym igd 697 V.R.Q.W. ocxmnc cg vyti sbwmam.
 ```
 
 <br><br><br>
@@ -625,15 +631,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-9D9-21.5
-021-1b.4
-547-f2.3
-B82-50.9
-7E3-d1.7
-432-11.b
-1CA-3f.0
-FDA-c9.d
-8E7-49.a
+77B-13.8
+0B5-84.0
+D8C-e7.3
+AF0-48.2
+2BA-c2.8
+AC3-91.0
+49B-c4.1
+AE4-96.e
+B22-0b.0
 ```
 
 
