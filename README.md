@@ -341,6 +341,22 @@ a
 ```
 
 <br><br><br>
+### 〈mergeJsonιjsonAιjsonB〉
+Combines `jsonA` and `jsonB` into a single json object. Merging happens in deeper paths as well, in case of a conflict values from `jsonB` will overwrite values from `jsonA`.
+
+#### Examples
+##### Input
+```
+〈mergeJsonι
+{a: 1, ab: 2, arrayAB: [1, 3], arrayA: [2], arrayB: 8, objectAB: {a: "e", ab: "f"}}ι
+{b: 3, ab: 5, arrayAB: [2, 3, 4], arrayA: 7, arrayB: [3], objectAB: {b: "g", ab: "hi"}}〉
+```
+##### Output
+```
+{"a":1,"ab":5,"arrayAB":[1,3,2,3,4],"arrayA":7,"arrayB":[3],"objectAB":{"a":"e","ab":"hi","b":"g"},"b":3}
+```
+
+<br><br><br>
 ### 〈n〉
 Creates a newline.
 
@@ -369,6 +385,30 @@ Close the issue〉
  - [X] Report an issue
  - [ ] Fix the issue
  - [ ] Close the issue
+```
+
+<br><br><br>
+### 〈overSpaceιspacenameιcontent〉
+Overwrites the space `spacename` with `content`, which can later be accessed with `readSpace` command.
+
+#### Examples
+##### Input
+```
+〈toSpaceιprettyTextιText〉
+Check 1: 〈readSpaceιprettyText〉
+〈toSpaceιprettyTextι Something 〈readSpaceιprettyText〉〉
+Check 2: 〈readSpaceιprettyText〉
+〈overSpaceιprettyTextιPrefixed 〈readSpaceιprettyText〉〉
+Check 3: 〈readSpaceιprettyText〉
+```
+##### Output
+```
+
+Check 1: Text
+
+Check 2: Text Something Text
+
+Check 3: Prefixed Text Something Text
 ```
 
 <br><br><br>
@@ -532,7 +572,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Wfdym igd 697 V.R.Q.W. ocxmnc cg vyti sbwmam.
+Ynkvo xqh 344 Q.Y.B.O. ndtjdd jo xxuw knvakg.
 ```
 
 <br><br><br>
@@ -631,15 +671,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-77B-13.8
-0B5-84.0
-D8C-e7.3
-AF0-48.2
-2BA-c2.8
-AC3-91.0
-49B-c4.1
-AE4-96.e
-B22-0b.0
+4D9-88.c
+CC3-8c.5
+0F9-1a.1
+CCA-e0.c
+0E2-b0.7
+36B-73.9
+8C2-49.1
+1FC-bf.d
+265-3d.5
 ```
 
 
