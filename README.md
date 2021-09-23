@@ -464,6 +464,20 @@ You really like apples... You think.
 ```
 
 <br><br><br>
+### 〈replaceRegexιpatternιreplacementιtext〉
+Replaces all fragments that match `pattern` in `text` with `replacement`, case sensitive.
+
+#### Examples
+##### Input
+```
+〈replaceRegexιw+:ιmod:compressed_ι[minecraft:dirt, minecraft:stone, twilight:carminite]〉
+```
+##### Output
+```
+[minecraft:dirt, minecraft:stone, twilight:carminite]
+```
+
+<br><br><br>
 ### 〈romanιnumber〉
 Convert `number` into roman numerals.
 
@@ -572,7 +586,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Ynkvo xqh 344 Q.Y.B.O. ndtjdd jo xxuw knvakg.
+Ntseo xps 648 E.J.K.P. acfjtm ou vfrk nreret.
 ```
 
 <br><br><br>
@@ -671,15 +685,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-4D9-88.c
-CC3-8c.5
-0F9-1a.1
-CCA-e0.c
-0E2-b0.7
-36B-73.9
-8C2-49.1
-1FC-bf.d
-265-3d.5
+596-9f.9
+865-e5.0
+9BD-e8.2
+ACD-d3.7
+F6A-37.7
+CD5-0c.9
+6E0-d5.e
+C93-33.8
+19B-02.5
 ```
 
 
