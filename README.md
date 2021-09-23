@@ -215,6 +215,20 @@ Version 0.4.0
 ```
 
 <br><br><br>
+### 〈eachJsonιjsonιoperationιoperationPrefix〉
+Runs eval(`operationPrefix`+val+`operation`) on each value from `json`, inclding deeper paths.
+
+#### Examples
+##### Input
+```
+〈eachJsonι{a: 3, b: 5, array: [4, 9, 1], object: {c: 4, d: 2, e: 0}}ι/2)*2ιMath.floor(〉
+```
+##### Output
+```
+{"a":2,"b":4,"array":[4,8,0],"object":{"c":4,"d":2,"e":0}}
+```
+
+<br><br><br>
 ### 〈evalιcode〉
 Evaluates javascript passed as `code`. Especially useful for mathematical operations.
 
@@ -586,7 +600,7 @@ Replaces characters in `text` with random ones from the same range.
 ```
 ##### Output
 ```
-Ntseo xps 648 E.J.K.P. acfjtm ou vfrk nreret.
+Pyjaf uct 357 F.R.R.D. nmdyyb fh tdyt slgtpp.
 ```
 
 <br><br><br>
@@ -685,15 +699,15 @@ Generate uid in given `pattern`, where each alpha-numeric character represents m
 ```
 ##### Output
 ```
-596-9f.9
-865-e5.0
-9BD-e8.2
-ACD-d3.7
-F6A-37.7
-CD5-0c.9
-6E0-d5.e
-C93-33.8
-19B-02.5
+C68-2f.3
+BD9-db.9
+0DC-b9.e
+777-96.3
+411-79.0
+CEA-7e.1
+B48-98.8
+84C-0b.d
+440-ec.e
 ```
 
 
